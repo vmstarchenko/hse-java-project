@@ -8,14 +8,14 @@ public class Task {
 
     public Task(String description) {
         this.description = description;
-        this.subtasks = new Vector<Task>;
+        this.subtasks = new Vector<Task>();
     }
 
     void addTask(Task task) {
         this.subtasks.add(task);
     }
 
-    void cansel() {
+    void canсel() {
         status = 2;
     }
 
