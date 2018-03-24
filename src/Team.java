@@ -1,24 +1,36 @@
 import java.util.Vector;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Team {
     private Vector<User> members;
-    private Vector<Task> tasks;
+    private Map<String, Task> tasks;
     private String       name;
 
 
     public Team(String name) {
         this.name = name;
-        this.members = new Vector<User>();
-        this.tasks = new Vector<Task>();
+        tasks = new HashMap<String, Task>();
+        members = new Vector<User>();
     }
+
     void addTask(Task task) {
-        this.tasks.add(task);
+        // TODO: if this task already exists: raise valueError ???
+        tasks[task.getName()] = task;
         for (User member: members) {
             member.addTask(task);
         }
     }
+
     void addMember(User user) {
         this.members.add(user);
         user.addTeam(this);
+    }
+
+    void removeMember(User user) {
+        // TODO: implement this
+        for (String name: tasks.keySet()) {
+            user.removeTask(name);
+        }
     }
 }

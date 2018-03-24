@@ -2,17 +2,27 @@ import java.util.Vector;
 
 
 public class Task {
+    private String name;
     private String description;
     private Vector<Task> subtasks;
     private int status = 0; // 0 - todo; 1 - done; 2 - canseled
 
-    public Task(String description) {
+    public Task(String name, String description) {
+        this.name = name;
         this.description = description;
-        this.subtasks = new Vector<Task>();
+        subtasks = new Vector<Task>();
     }
 
     void addTask(Task task) {
-        this.subtasks.add(task);
+        subtasks.add(task);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    void changeDescription(String description) {
+        this.description = description;
     }
 
     void canсel() {
