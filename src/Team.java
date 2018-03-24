@@ -16,7 +16,7 @@ public class Team {
 
     void addTask(Task task) {
         // TODO: if this task already exists: raise valueError ???
-        tasks[task.getName()] = task;
+        tasks.put(task.getName(), task);
         for (User member: members) {
             member.addTask(task);
         }

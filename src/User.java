@@ -15,7 +15,7 @@ public class User {
     }
 
     void addTask(Task task) {
-        tasks[task.getName()] = task;
+        tasks.put(task.getName(), task);
     }
 
     void removeTask(String name) {
