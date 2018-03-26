@@ -10,12 +10,13 @@ public class Task {
     private Vector<Task> subtasks;
     private Date date = new Date();
     private int status = 0; // 0 - todo; 1 - done; 2 - canseled
+    private SimpleDateFormat date_format;
 
     public Task(String name, String description, String task_date) {
         this.name = name;
         this.description = description;
         subtasks = new Vector<Task>();
-        SimpleDateFormat date_format = new SimpleDateFormat("dd/MM/yyyy");
+        date_format = new SimpleDateFormat("dd.MM.yyyy");
 
         try {
             this.date = date_format.parse(task_date);
@@ -23,6 +24,27 @@ public class Task {
             e.printStackTrace();
         }
 
+    }
+
+    public String asString() {
+        return asString(true);
+    }
+
+    public String asString(boolean recursive) {
+        return asString(recursive, 0);
+    }
+
+    public String asString(boolean recursive, int level) {
+        String indentation = new String(new char[level]).replace("\0", " ");
+        String out = indentation + "<Task " + name + " [" + date_format.format(date) + "]";
+        if (!recursive || subtasks.isEmpty()) {
+            return out + ">";
+        }
+
+        for (Task subtask : subtasks) {
+            out += subtask.asString(recursive, level + 1);
+        }
+        return out + ">";
     }
 
     void addTask(Task task) {

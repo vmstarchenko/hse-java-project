@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.Vector;
 import java.util.Map;
 import java.util.HashMap;
@@ -20,7 +21,14 @@ public class Team {
         for (User member: members) {
             member.addTask(task);
         }
+    }    Vector<User> GetMembers() {
+        return this.members;
     }
+
+    String getName() {
+        return name;
+    }
+
 
     void addMember(User user) {
         this.members.add(user);
@@ -34,8 +42,11 @@ public class Team {
         }
     }
 
-    Vector<User> GetMembers() {
-        return this.members;
+    Vector<User> getMembers() {
+        return members;
     }
 
+    Vector<Task> getTasks() {
+        return new Vector<Task>(tasks.values());
+    }
 }

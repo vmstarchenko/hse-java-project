@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
+import java.util.Collection;
 
 public class User {
     private Vector<Team> teams;
@@ -26,11 +27,11 @@ public class User {
         this.teams.add(team);
     }
 
-    String GetName() {
+    String getName() {
         return this.name;
     }
 
-    Map<String, Task> GetTasks() {
-        return tasks;
+    Vector<Task> getTasks() {
+        return new Vector<Task>(tasks.values());
     }
 }
