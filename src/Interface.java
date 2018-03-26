@@ -8,7 +8,7 @@ public class Interface {
     private Map<String, Task> tasks = new HashMap();
 
     void parseCommand(String command) {
-        
+
 
     }
 
