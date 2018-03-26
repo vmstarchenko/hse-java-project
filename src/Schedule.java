@@ -1,16 +1,30 @@
 import java.util.Map;
+import java.util.Vector;
 
 public class Schedule {
-    void ShowSchedule(Team team) {
-        for (User member: team.GetMembers()) {
-            System.out.println(member.GetName()+" :\n");
-            this.ShowSchedule(member);
-        }
+    private int taskIndentation = 2;
 
+    void ShowSchedule(Team team) { // TODO: rewrite as interface
+        ShowSchedule(team, true);
+    }
+
+    void ShowSchedule(Team team, boolean recursive) {
+        System.out.println(team.getName() + ":");
+        printTasks(recursive, team.getTasks());
     }
 
     void ShowSchedule(User user) {
-        Map<String, Task> tasks = user.GetTasks();
-        System.out.println(tasks.keySet());
+        ShowSchedule(user, true);
+    }
+
+    void ShowSchedule(User user, boolean recursive) {
+        System.out.println(user.getName() + ":");
+        printTasks(recursive, user.getTasks());
+    }
+
+    void printTasks(boolean recursive, Vector<Task> tasks) {
+        for (Task task : tasks) {
+            System.out.println(task.asString(recursive, taskIndentation));
+        }
     }
 }
