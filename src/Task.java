@@ -42,7 +42,7 @@ public class Task {
         }
 
         for (Task subtask : subtasks) {
-            out += subtask.asString(recursive, level + 1);
+            out += "\n" + subtask.asString(recursive, level + 1);
         }
         return out + ">";
     }
