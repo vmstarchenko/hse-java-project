@@ -1,5 +1,9 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hello world");
+        Schedule sch = new Schedule();
+        User usr = new User("qwe");
+        Team tm = new Team("asd");
+        sch.ShowSchedule(usr);
+        sch.ShowSchedule(tm);
     }
 }

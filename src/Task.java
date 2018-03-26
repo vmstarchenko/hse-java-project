@@ -26,14 +26,14 @@ public class Task {
     }
 
     void canсel() {
-        status = 2;
+        this.status = 2;
     }
 
     void done() {
-        status = 1;
+        this.status = 1;
     }
 
     void todo() {
-        status = 0;
+        this.status = 0;
     }
 }

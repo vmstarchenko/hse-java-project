@@ -25,4 +25,12 @@ public class User {
     void addTeam(Team team) {
         this.teams.add(team);
     }
+
+    String GetName() {
+        return this.name;
+    }
+
+    Map<String, Task> GetTasks() {
+        return tasks;
+    }
 }

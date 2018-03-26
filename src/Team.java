@@ -33,4 +33,9 @@ public class Team {
             user.removeTask(name);
         }
     }
+
+    Vector<User> GetMembers() {
+        return this.members;
+    }
+
 }
