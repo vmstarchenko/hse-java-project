@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class Schedule {
     void ShowSchedule(Team team) {
         for (User member: team.GetMembers()) {
@@ -8,6 +10,7 @@ public class Schedule {
     }
 
     void ShowSchedule(User user) {
-        user.GetTasks();
+        Map<String, Task> tasks = user.GetTasks();
+        System.out.println(tasks.keySet());
     }
 }
