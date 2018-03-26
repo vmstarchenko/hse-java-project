@@ -26,6 +26,14 @@ public class Main {
         Task task3 = new Task("task 3", "some task 3", "28.1.2123");
         Task task4 = new Task("task 4", "some task 4", "28.2.2123");
 
+        Task subtask1 = new Task("sub_task 1", "some sub_task 1", "28.2.2123");
+        Task subtask2 = new Task("sub_task 2", "some sub_task 2", "28.2.2123");
+        Task subtask3 = new Task("sub_task 3", "some sub_task 3", "28.2.2123");
+
+        subtask1.addTask(subtask2);
+        task1.addTask(subtask1);
+        task2.addTask(subtask3);
+
         team1.addTask(task1);
 
         usr2.addTask(task3);
