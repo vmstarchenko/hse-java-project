@@ -28,6 +28,7 @@ public class Main {
         AutoTask task3 = new AutoTask("task 3", "some task 3", "28.2.2123");
         AutoTask task5 = new AutoTask("task 5", "some task 5", "28.2.2123");
         AutoTask task6 = new AutoTask("task 6", "some task 6", "28.2.2123");
+        
 
         task3.addTask(task5);
         task3.addTask(task6);
