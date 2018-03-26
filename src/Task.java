@@ -12,6 +12,8 @@ public class Task {
     private int status = 0; // 0 - todo; 1 - done; 2 - canseled
     private SimpleDateFormat date_format;
 
+    private int indentationWidth = 4;
+
     public Task(String name, String description, String task_date) {
         this.name = name;
         this.description = description;
@@ -36,15 +38,15 @@ public class Task {
 
     public String asString(boolean recursive, int level) {
         String indentation = new String(new char[level]).replace("\0", " ");
-        String out = indentation + "<Task " + name + " [" + date_format.format(date) + "]";
+        String out = indentation + "Task " + name + " [" + date_format.format(date) + "]";
         if (!recursive || subtasks.isEmpty()) {
-            return out + ">";
+            return out;
         }
 
         for (Task subtask : subtasks) {
-            out += "\n" + subtask.asString(recursive, level + 1);
+            out += "\n" + subtask.asString(recursive, level + indentationWidth);
         }
-        return out + ">";
+        return out;
     }
 
     void addTask(Task task) {
