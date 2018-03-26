@@ -25,15 +25,32 @@ public class Task {
         this.description = description;
     }
 
+    void updateTaskStatus(int status) {
+        this.status = status;
+    }
+
     void canсel() {
-        this.status = 2;
+        this.updateTaskStatus(2);
     }
 
     void done() {
-        this.status = 1;
+        this.updateTaskStatus(1);
     }
 
     void todo() {
-        this.status = 0;
+        this.updateTaskStatus(0);
+    }
+
+    void recalcStatus() {
+        boolean isDone = true;
+        for (Task task : this.subtasks) {
+            if (task.status == 0) {
+                isDone = false;
+                break;
+            }
+        }
+        if (isDone) {
+            done();
+        }
     }
 }
