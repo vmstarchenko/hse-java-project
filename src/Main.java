@@ -21,10 +21,10 @@ public class Main {
         team2.addMember(usr2);
         team2.addMember(usr3);
 
-        Task task1 = new Task("task 1", "some task 1", "28/12/2123");
-        Task task2 = new Task("task 2", "some task 2", "18/12/2103");
-        Task task3 = new Task("task 3", "some task 3", "28/1/2123");
-        Task task4 = new Task("task 4", "some task 4", "28/2/2123");
+        Task task1 = new Task("task 1", "some task 1", "28.12.2123");
+        Task task2 = new Task("task 2", "some task 2", "18.12.2103");
+        Task task3 = new Task("task 3", "some task 3", "28.1.2123");
+        Task task4 = new Task("task 4", "some task 4", "28.2.2123");
 
         team1.addTask(task1);
 
@@ -35,7 +35,8 @@ public class Main {
         usr4.addTask(task4);
 
 
-        sch.ShowSchedule(usr1);
+        sch.ShowSchedule(usr2);
         sch.ShowSchedule(team1);
+
     }
 }
