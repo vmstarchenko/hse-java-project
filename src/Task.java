@@ -8,7 +8,7 @@ public class Task {
     private String name;
     private String description;
     private Vector<Task> subtasks;
-    private Date date;
+    private Date date = new Date();
     private int status = 0; // 0 - todo; 1 - done; 2 - canseled
 
     public Task(String name, String description, String task_date) {
