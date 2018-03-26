@@ -3,8 +3,8 @@ import java.util.Vector;
 public class AutoTask  extends Task {
     private Task parentTask;
 
-    public AutoTask(String name, String description) {
-        super(name, description);
+    public AutoTask(String name, String description, String date) {
+        super(name, description, date);
     }
 
     void addTask(AutoTask task) {
