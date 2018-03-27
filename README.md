@@ -5,7 +5,8 @@
 ## Установка и запуск
 
  ```
- gradle build | gradle run -q
+ gradle build 
+ gradle run -q
  ```
  
  ## Интерфейс и инструкция использования органайзера
