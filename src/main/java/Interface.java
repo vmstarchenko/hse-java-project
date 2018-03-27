@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -9,11 +11,18 @@ public class Interface {
     private Map<String, Task> tasks = new HashMap();
 
     void run() {
-        Scanner reader = new Scanner(System.in);
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        String input;
         while (true) {
              // Reading from System.in
             System.out.print("Enter command (\\h for help): ");
-            String input = reader.next();
+            input = "\\q";
+            try{
+                input = br.readLine();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
 
             switch (input) {
                 case "\\at":
@@ -22,8 +31,31 @@ public class Interface {
                 case "\\au":
                     addUser();
                     break;
+                case "\\atask":
+                    addTask();
+                    break;
+                case "\\addtask2team":
+                    addTaskToTeam();
+                    break;
+                case "\\addtask2user":
+                    addTaskToUser();
+                    break;
+                case "\\addsubtask":
+                    addSubtask();
+                    break;
+                case "\\adduser2team":
+                    addUserToTeam();
+                    break;
+                case "\\showusers":
+                    showUsers();
+                    break;
+                case "\\showteams":
+                    showTeams();
+                    break;
+                case "\\showtasks":
+                    showTasks();
+                    break;
                 case "\\q":
-                    reader.close();
                     return;
                 case "\\h":
                     showHelp();
@@ -43,42 +75,174 @@ public class Interface {
                 "Help:\n" +
                         " \\au - add user\n" +
                         " \\at - add team\n" +
+                        " \\atask - add task\n" +
+                        " \\addtask2team - add task\n" +
+                        " \\addtask2user - add task\n" +
+                        " \\addsubtask - add subtask\n" +
+                        " \\adduser2team - add user to team\n" +
+                        " \\showusers  - show show user list\n" +
+                        " \\showteams  - show show team list\n" +
+                        " \\showtasks  - show show task list\n" +
+                        " \\nt - create task\n" +
                         " \\h  - show this message\n" +
-                        " \\nt - create task\n"));
+                        " \\q  - close"));
     }
 
     void addTeam() {
-        Scanner reader = new Scanner(System.in);
-        System.out.print("Enter team name: ");
-        String name = reader.next();
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+
+        String name = "";
+
+        try {
+            System.out.print("Enter team name: ");
+            name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+
         teams.put(name, new Team(name));
     }
 
     void addUser() {
-        Scanner reader = new Scanner(System.in);
-        System.out.print("Enter user name: ");
-        String name = reader.next();
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+
+        String name = "";
+
+        try {
+            System.out.print("Enter user name: ");
+            name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
         users.put(name, new User(name));
     }
 
-    void addTask(String name, String description, String date) {
+    void addTask() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        String name = "";
+        String description = "";
+        String date = "";
+
+        try {
+            System.out.print("Enter task name: ");
+            name = br.readLine();
+            System.out.print("Enter task description: ");
+            description = br.readLine();
+            System.out.print("Enter deadline: ");
+            date = br.readLine();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
         tasks.put(name, new Task(name, description, date));
     }
 
-    void addTaskToTeam(String team_name, String task_name) {
-        teams.get(team_name).addTask(tasks.get(task_name));
+    void addTaskToTeam() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+
+        String team_name = "";
+        String task_name = "";
+
+        try {
+            System.out.print("Enter team name: ");
+            team_name = br.readLine();
+            System.out.print("Enter task name: ");
+            task_name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            teams.get(team_name).addTask(tasks.get(task_name));
+        } catch(Exception e) {
+            System.out.print("Wrong task or team name\n");
+        }
     }
 
-    void addTaskToUser(String user_name, String task_name) {
-        users.get(user_name).addTask(tasks.get(task_name));
+    void addTaskToUser() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+
+        String user_name = "";
+        String task_name = "";
+
+        try {
+            System.out.print("Enter user name: ");
+            user_name = br.readLine();
+            System.out.print("Enter task name: ");
+            task_name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            users.get(user_name).addTask(tasks.get(task_name));
+        } catch(Exception e) {
+            System.out.print("Wrong name or task\n");
+        }
     }
 
-    void addSubtask(String task_name, String subtask_name) {
-        tasks.get(task_name).addTask(tasks.get(subtask_name));
+    void addSubtask() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+
+        String subtask_name = "";
+        String task_name = "";
+
+        try {
+            System.out.print("Enter task name: ");
+            task_name = br.readLine();
+            System.out.print("Enter subtask name: ");
+            subtask_name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        try{
+            tasks.get(task_name).addTask(tasks.get(subtask_name));
+        } catch(Exception e) {
+           System.out.print("Wrong task or subtask name\n");
+        }
     }
 
-    void addUserToTeam(String user_name, String team_name) {
-        teams.get(team_name).addMember(users.get(user_name));
+    void addUserToTeam() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+
+        String user_name = "";
+        String team_name = "";
+
+        try {
+            System.out.print("Enter user name: ");
+            user_name = br.readLine();
+            System.out.print("Enter team name: ");
+            team_name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            teams.get(team_name).addMember(users.get(user_name));
+        } catch(Exception e) {
+            System.out.print("Wrong name or team_name\n");
+        }
     }
+
+    void showTasks() {
+        System.out.print(tasks.keySet() + "\n");
+    }
+
+    void showUsers() {
+        System.out.print(users.keySet() + "\n");
+    }
+
+    void showTeams() {
+        System.out.print(teams.keySet() + "\n");
+    }
+
 
 }

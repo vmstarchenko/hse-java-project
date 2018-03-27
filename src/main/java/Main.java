@@ -5,8 +5,8 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         (new Interface()).run();
-
         Schedule sch = new Schedule();
+
 
         User usr1 = new User("User 1");
         User usr2 = new User("User 2");
