@@ -59,6 +59,10 @@ public class Interface {
                 case "\\sus":
                     showUserSchedule();
                     break;
+                case "\\example":
+                    (new Example()).execute();
+
+                    break;
                 case "\\q":
                     return;
                 case "\\h":
