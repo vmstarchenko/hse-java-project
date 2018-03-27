@@ -1,0 +1,58 @@
+Пример сеанса работы
+
+$ gradle run -q
+Enter command (\h for help): \h
+Help:
+ \au - add user
+ \at - add team
+ \atask - add task
+ \addtask2team - add task
+ \addtask2user - add task
+ \addsubtask - add subtask
+ \adduser2team - add user to team
+ \showusers  - show user list
+ \showteams  - show team list
+ \showtasks  - show task list
+ \sts  - show team schedule
+ \sus  - show user schedule
+ \nt - create task
+ \h  - show this message
+ \q  - close
+Enter command (\h for help): \au
+Enter user name: user1
+Enter command (\h for help): \at
+Enter team name: team1
+Enter command (\h for help): \adduser2team
+Enter user name: user1
+Enter team name: team1
+Enter command (\h for help): \atask
+Enter task name: task1
+Enter task description: task
+Enter deadline: 01.01.2019
+Enter command (\h for help): \addtask2user
+Enter user name: user1
+Enter task name: task1
+Enter command (\h for help): \showteam
+unknown command
+Help:
+ \au - add user
+ \at - add team
+ \atask - add task
+ \addtask2team - add task
+ \addtask2user - add task
+ \addsubtask - add subtask
+ \adduser2team - add user to team
+ \showusers  - show user list
+ \showteams  - show team list
+ \showtasks  - show task list
+ \sts  - show team schedule
+ \sus  - show user schedule
+ \nt - create task
+ \h  - show this message
+ \q  - close
+Enter command (\h for help): \sus
+Enter user name: user1
+user1:
+  Task task1 [01.01.2019]
+Enter command (\h for help): \q
+$

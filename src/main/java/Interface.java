@@ -89,7 +89,6 @@ public class Interface {
                         " \\showtasks  - show task list\n" +
                         " \\sts  - show team schedule\n" +
                         " \\sus  - show user schedule\n" +
-                        " \\nt - create task\n" +
                         " \\h  - show this message\n" +
                         " \\q  - close"));
     }
