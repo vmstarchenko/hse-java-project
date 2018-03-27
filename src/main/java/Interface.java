@@ -2,8 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Vector;
-import java.util.Scanner;
 
 public class Interface {
     private Map<String, Team> teams = new HashMap();
@@ -212,7 +210,7 @@ public class Interface {
             e.printStackTrace();
         }
         try{
-            tasks.get(task_name).addTask(tasks.get(subtask_name));
+            tasks.get(task_name).addSubtask(tasks.get(subtask_name));
         } catch(Exception e) {
            System.out.print("Wrong task or subtask name\n");
         }

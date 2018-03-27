@@ -4,22 +4,13 @@ import java.util.Vector;
 public class Schedule {
     private int taskIndentation = 2;
 
-    void ShowSchedule(Team team) { // TODO: rewrite as interface
-        ShowSchedule(team, true);
+    void ShowSchedule(ScheduleObject scheduleObject) { // TODO: rewrite as interface
+        ShowSchedule(scheduleObject, true);
     }
 
-    void ShowSchedule(Team team, boolean recursive) {
-        System.out.println(team.getName() + ":");
-        printTasks(recursive, team.getTasks());
-    }
-
-    void ShowSchedule(User user) {
-        ShowSchedule(user, true);
-    }
-
-    void ShowSchedule(User user, boolean recursive) {
-        System.out.println(user.getName() + ":");
-        printTasks(recursive, user.getTasks());
+    void ShowSchedule(ScheduleObject scheduleObject, boolean recursive) {
+        System.out.println(scheduleObject.getName() + ":");
+        printTasks(recursive, scheduleObject.getTasks());
     }
 
     void printTasks(boolean recursive, Vector<Task> tasks) {

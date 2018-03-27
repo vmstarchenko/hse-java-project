@@ -1,9 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
-import java.util.Collection;
 
-public class User {
+public class User implements ScheduleObject {
     private Vector<Team> teams;
     private Map<String, Task> tasks;
     private String       name;
@@ -27,11 +26,13 @@ public class User {
         this.teams.add(team);
     }
 
-    String getName() {
+    @Override
+    public String getName() {
         return this.name;
     }
 
-    Vector<Task> getTasks() {
+    @Override
+    public Vector<Task> getTasks() {
         return new Vector<Task>(tasks.values());
     }
 }

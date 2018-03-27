@@ -5,6 +5,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         (new Interface()).run();
+        /*
         Schedule sch = new Schedule();
 
 
@@ -55,6 +56,6 @@ public class Main {
 
         sch.ShowSchedule(usr2);
         sch.ShowSchedule(team1);
-
+        */
     }
 }

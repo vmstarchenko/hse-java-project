@@ -1,5 +1,3 @@
-import java.util.Vector;
-
 public class AutoTask  extends Task {
     private Task parentTask;
 
@@ -8,7 +6,7 @@ public class AutoTask  extends Task {
     }
 
     void addTask(AutoTask task) {
-        super.addTask(task);
+        super.addSubtask(task);
         task.parentTask = this;
     }
 

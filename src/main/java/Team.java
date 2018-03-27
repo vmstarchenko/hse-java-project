@@ -1,9 +1,8 @@
-import java.util.Collection;
 import java.util.Vector;
 import java.util.Map;
 import java.util.HashMap;
 
-public class Team {
+public class Team implements ScheduleObject {
     private Vector<User> members;
     private Map<String, Task> tasks;
     private String       name;
@@ -16,7 +15,6 @@ public class Team {
     }
 
     void addTask(Task task) {
-        // TODO: if this task already exists: raise valueError ???
         tasks.put(task.getName(), task);
         for (User member: members) {
             member.addTask(task);
@@ -25,28 +23,29 @@ public class Team {
         return this.members;
     }
 
-    String getName() {
-        return name;
-    }
-
-
     void addMember(User user) {
         this.members.add(user);
         user.addTeam(this);
     }
 
     void removeMember(User user) {
-        // TODO: implement this
         for (String name: tasks.keySet()) {
             user.removeTask(name);
         }
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public Vector<Task> getTasks() {
+        return new Vector<Task>(tasks.values());
     }
 
     Vector<User> getMembers() {
         return members;
     }
 
-    Vector<Task> getTasks() {
-        return new Vector<Task>(tasks.values());
-    }
 }
