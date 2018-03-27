@@ -55,6 +55,12 @@ public class Interface {
                 case "\\showtasks":
                     showTasks();
                     break;
+                case "\\sts":
+                    showTeamSchedule();
+                    break;
+                case "\\sus":
+                    showUserSchedule();
+                    break;
                 case "\\q":
                     return;
                 case "\\h":
@@ -80,9 +86,11 @@ public class Interface {
                         " \\addtask2user - add task\n" +
                         " \\addsubtask - add subtask\n" +
                         " \\adduser2team - add user to team\n" +
-                        " \\showusers  - show show user list\n" +
-                        " \\showteams  - show show team list\n" +
-                        " \\showtasks  - show show task list\n" +
+                        " \\showusers  - show user list\n" +
+                        " \\showteams  - show team list\n" +
+                        " \\showtasks  - show task list\n" +
+                        " \\sts  - show team schedule\n" +
+                        " \\sus  - show user schedule\n" +
                         " \\nt - create task\n" +
                         " \\h  - show this message\n" +
                         " \\q  - close"));
@@ -243,6 +251,43 @@ public class Interface {
     void showTeams() {
         System.out.print(teams.keySet() + "\n");
     }
+    void showTeamSchedule() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        Schedule sch = new Schedule();
 
+        String team_name = "";
+
+        try {
+            System.out.print("Enter user name: ");
+            team_name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            sch.ShowSchedule(teams.get(team_name));
+        } catch(Exception e) {
+            System.out.print("Wrong team_name\n");
+        }
+    }
+    void showUserSchedule() {
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(isr);
+        Schedule sch = new Schedule();
+
+        String user_name = "";
+
+        try {
+            System.out.print("Enter user name: ");
+            user_name = br.readLine();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            sch.ShowSchedule(users.get(user_name));
+        } catch(Exception e) {
+            System.out.print("Wrong user_name\n");
+        }
+    }
 
 }
